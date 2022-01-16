@@ -70,7 +70,7 @@ const Content: FC = () => {
 
 	return (
 		<div
-			className="col-span-8 h-96 sm:h-auto overflow-y-scroll px-8 sm:mt-0 mt-6 sm:overflow-x-clip overflow-x-scroll"
+			className="col-span-8 h-96 sm:h-auto overflow-y-scroll px-8 sm:mt-0 mt-6 overflow-x-clip"
 			ref={(e) => (containerRef.current = e!)}
 			onScroll={handleScroll}
 		>
