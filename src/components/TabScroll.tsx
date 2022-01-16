@@ -70,13 +70,13 @@ const Content: FC = () => {
 
 	return (
 		<div
-			className="col-span-8 h-96 overflow-y-scroll px-8 sm:mt-0 mt-6 sm:overflow-x-clip overflow-x-scroll"
+			className="col-span-8 h-96 sm:h-auto overflow-y-scroll px-8 sm:mt-0 mt-6 sm:overflow-x-clip overflow-x-scroll"
 			ref={(e) => (containerRef.current = e!)}
 			onScroll={handleScroll}
 		>
 			<div className="space-y-12">
 				{contents!.map((e) => (
-					<div key={e.id} id={e.id} ref={addRef} className="min-h-[21rem]">
+					<div key={e.id} id={e.id} ref={addRef} >
 						{e.content}
 					</div>
 				))}
@@ -146,7 +146,7 @@ const TabScroll: FC<Props> = (props) => {
 	return (
 		<Context.Provider value={value}>
 			<div className={props.className}>
-				<div className="grid sm:grid-cols-12 grid-cols-1 sm:h-96 h-auto shadow-lg py-6 rounded-lg border-2">
+				<div className="grid sm:grid-cols-12 grid-cols-1 sm:h-[32rem] h-auto shadow-lg py-6 rounded-lg border-2 bg-white">
 					<Tabs />
 					<Content />
 				</div>

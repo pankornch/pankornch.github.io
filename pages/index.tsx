@@ -23,6 +23,10 @@ import MySqlSVG from "@/public/mysql.svg"
 import FirebaseSVG from "@/public/firebase.svg"
 
 const Home: NextPage = () => {
+	const getAge = () => {
+		const now = new Date()
+		return now.getFullYear() - 2000
+	}
 	return (
 		<div>
 			<Head>
@@ -31,7 +35,7 @@ const Home: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<main className="sm:px-56 px-6">
+			<main className="sm:px-56 px-6 bg-[#F0F0F6]">
 				<Navbar />
 				<div className="min-h-[90vh] pt-32">
 					<div className="flex sm:justify-between sm:items-center flex-col sm:flex-row">
@@ -76,59 +80,80 @@ const Home: NextPage = () => {
 					</div>
 				</div>
 
+				<h4 className="text-3xl text-center underline underline-offset-4 text-orange-500 mb-12">Resume</h4>
 				<TabScroll
-					className="sm:mt-0 mt-12"
+					className="sm:mt-0 mt-12 pb-56"
 					tabs={[
 						{ title: "Personal Info", id: "personal_info" },
-						{ title: "Languages", id: "languages" },
-						{ title: "Education", id: "education" },
 						{ title: "Programming Skills", id: "programming_skills" },
 						{ title: "Projects", id: "projects" },
+						{ title: "Tournaments & Activities", id: "activities" },
 					]}
 					contents={[
 						{
 							id: "personal_info",
 							content: (
-								<div className="flex flex-col justify-center">
-									<div className="">Pankorn Chantarod</div>
-									<div>24 OCT. 2000</div>
-									<div>Chiang Rai, Thailand</div>
-								</div>
-							),
-						},
-						{
-							id: "languages",
-							content: (
-								<div>
-									<div>Thai (Native)</div>
-									<div>English (Intermediate)</div>
-								</div>
-							),
-						},
-						{
-							id: "education",
-							content: (
-								<div className="flex justify-between">
-									<div className="flex items-start">
-										<div className="w-4 h-4 bg-orange-500 rounded-full mt-1 mr-3" />
-										<div className="">
-											<div className="text-orange-500 font-medium text-lg">
-												University of Phayao
+								<div className="border-b pb-12">
+									<h5 className="text-2xl font-medium text-orange-500 mb-6 underline underline-offset-4">
+										Personal Information
+									</h5>
+									<div>
+										<div className="flex items-baseline space-x-3">
+											<div className="underline underline-offset-4 font-medium text-orange-500 text-lg min-w-[6rem]">
+												Name
 											</div>
-											<span>Software Engineering</span>
+											<div className="text-2xl">Pankorn Chantarod</div>
+										</div>
+										<div className="flex items-baseline space-x-3">
+											<div className="underline underline-offset-4 font-medium text-orange-500 text-lg min-w-[6rem]">
+												Birth date
+											</div>
+											<div className="">
+												24 OCTOBER. 2000 ({getAge()} years old.)
+											</div>
+										</div>
+										<div className="flex items-baseline space-x-3">
+											<div className="underline underline-offset-4 font-medium text-orange-500 text-lg min-w-[6rem]">
+												Address
+											</div>
+											<div className="">Chiang Rai, Thailand</div>
 										</div>
 									</div>
-									<div className="bg-orange-500 rounded-full h-fit text-white px-3 py-1 text-xs">
-										2019 - 2022
+
+									<h6 className="text-xl font-medium text-orange-500 mb-3 mt-6">
+										Languages
+									</h6>
+									<ul className="ml-3">
+										<li>Thai (Native)</li>
+										<li>English (Intermediate)</li>
+									</ul>
+
+									<h6 className="text-xl font-medium text-orange-500 mb-3 mt-6">
+										Education
+									</h6>
+									<div className="flex justify-between">
+										<div className="flex items-start">
+											<div className="w-4 h-4 bg-orange-500 rounded-full mt-1 mr-3" />
+											<div className="">
+												<div className="text-orange-500 font-medium text-lg">
+													University of Phayao
+												</div>
+												<span>Software Engineering</span>
+											</div>
+										</div>
+										<div className="bg-orange-500 rounded-full h-fit text-white px-3 py-1 text-xs">
+											2019 - 2022
+										</div>
 									</div>
 								</div>
 							),
 						},
+
 						{
 							id: "programming_skills",
 							content: (
-								<div className="space-y-6 border-b pb-3">
-									<h5 className="text-xl font-medium text-orange-500 mb-3">
+								<div className="space-y-6 border-b pb-6">
+									<h5 className="text-2xl font-medium text-orange-500 mb-6 underline underline-offset-4">
 										Programming Languages
 									</h5>
 									<div className="flex space-x-6 pb-3">
@@ -245,8 +270,8 @@ const Home: NextPage = () => {
 						{
 							id: "projects",
 							content: (
-								<div>
-									<h5 className="text-xl font-medium text-orange-500 mb-3">
+								<div className="border-b pb-6">
+									<h5 className="text-2xl font-medium text-orange-500 mb-6 underline underline-offset-4">
 										Projects
 									</h5>
 									<div className="ml-3">
@@ -309,37 +334,108 @@ const Home: NextPage = () => {
 								</div>
 							),
 						},
+						{
+							id: "activities",
+							content: (
+								<div className="border-b pb-6">
+									<h5 className="text-2xl font-medium text-orange-500 mb-6 underline underline-offset-4">
+										Tournaments & Activities
+									</h5>
+									<ul className="ml-3 space-y-6">
+										<li className="">
+											<h6 className="font-medium text-orange-500 mb-3">
+												Startup Thailand League 2020 (Evoligence)
+											</h6>
+
+											<p className="ml-3">
+												Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+												sed do eiusmod tempor
+											</p>
+											<div className="flex justify-between mt-3 ml-3">
+												<div className="w-60 h-60 relative">
+													<Image
+														className="rounded-lg"
+														src="/startup-1.jpg"
+														layout="fill"
+														alt=""
+														objectFit="cover"
+													/>
+												</div>
+												<div className="w-80 h-60 relative">
+													<Image
+														className="rounded-lg"
+														src="/startup-2.jpg"
+														layout="fill"
+														alt=""
+														objectFit="cover"
+													/>
+												</div>
+											</div>
+										</li>
+										<li>
+											<h6 className="font-medium text-orange-500 mb-3">
+												Research to Market 2020 (Evoligence)
+											</h6>
+											<p className="ml-3">
+												Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+												sed do eiusmod tempor
+											</p>
+											<div className="flex justify-between mt-3 ml-3">
+												<div className="w-60 h-60 relative">
+													<Image
+														className="rounded-lg"
+														src="/r2m-1.jpg"
+														layout="fill"
+														alt=""
+														objectFit="cover"
+													/>
+												</div>
+												<div className="w-80 h-60 relative">
+													<Image
+														className="rounded-lg"
+														src="/r2m-2.jpg"
+														layout="fill"
+														alt=""
+														objectFit="cover"
+													/>
+												</div>
+											</div>
+										</li>
+										<li>
+											<h6 className="font-medium text-orange-500 mb-3">
+												Bootcamp 20Scoops CNX 2021
+											</h6>
+											<p className="ml-3">
+												Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+												sed do eiusmod tempor
+											</p>
+											<div className="flex justify-between mt-3 ml-3">
+												<div className="w-60 h-60 relative">
+													<Image
+														className="rounded-lg"
+														src="/20scoops-1.jpg"
+														layout="fill"
+														alt=""
+														objectFit="cover"
+													/>
+												</div>
+												<div className="w-80 h-60 relative">
+													<Image
+														className="rounded-lg"
+														src="/20scoops-2.jpg"
+														layout="fill"
+														alt=""
+														objectFit="cover"
+													/>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							),
+						},
 					]}
 				/>
-
-				<div>
-					<div>Tournaments & Activities</div>
-					<ul>
-						<li>
-							<div>Startup Thailand League 2020</div>
-							<span>Evoligence</span>
-							<span>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-								eiusmod tempor
-							</span>
-						</li>
-						<li>
-							<div>Research to Market 2020</div>
-							<span>Evoligence</span>
-							<span>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-								eiusmod tempor
-							</span>
-						</li>
-						<li>
-							<div>Bootcamp 20Scoops CNX 2021</div>
-							<span>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-								eiusmod tempor
-							</span>
-						</li>
-					</ul>
-				</div>
 			</main>
 		</div>
 	)
